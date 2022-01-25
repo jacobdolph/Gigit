@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card} from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 function Cards(props) {
   function onButtonClick(e) {
@@ -13,20 +13,19 @@ function Cards(props) {
   }
 
   return (
-    <Card style={{ width: "18rem", margin: "25px" }} className="gigCards">
-      <Card.Img variant="top" src={props.src} />
+    <Card style={{ width: "18rem", margin: "25px" }} className='gigCards'>
+      <Card.Img variant='top' src={props.src} />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
         <br />
         <Link
-          to="/gig-setup"
-          className="gigCardBtn"
+          to='/gig-setup'
           onClick={() => {
             onButtonClick(props.title);
           }}
         >
-          Book Appointment
+          <Button className='gigCardBtn'>Book Appointment</Button>
         </Link>
       </Card.Body>
     </Card>
