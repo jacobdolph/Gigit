@@ -1,0 +1,27 @@
+.navbar {
+  background-image: linear-gradient(to right, #3c9c85, #5db15c);
+}
+
+.headerLinks {
+  font-size: 25px;
+  color: white;
+  font-style: normal;
+  margin-left: 25px;
+}
+
+.headerLinks:hover {
+  color: dimgray;
+  text-decoration: none;
+}
+.navbar-toggler {
+  border: none !important;
+}
+.navList {
+  display: flex;
+}
+
+@media only screen and (max-width: 900px) {
+  .navList {
+    display: block;
+  }
+}

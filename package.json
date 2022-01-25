@@ -1,0 +1,55 @@
+{
+  "name": "devdivas",
+  "version": "1.0.0",
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.16.3"
+  },
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.7.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
+    "create-react-class": "^15.6.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.3",
+    "express-openid-connect": "^0.6.0",
+    "heroku-cli": "^7.0.9",
+    "if-env": "^1.0.4",
+    "jwks-rsa": "^1.8.0",
+    "mongoose": "^5.9.9",
+    "npm-run-all": "^4.1.5",
+    "path": "^0.12.7",
+    "react-bootstrap": "^1.0.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.3"
+  },
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "seed": "node scripts/seedDB.js",
+    "dev": "npm-run-all --parallel start server",
+    "server": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawson-hamilton/devDivas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dawson-hamilton/devDivas/issues"
+  },
+  "homepage": "https://github.com/dawson-hamilton/devDivas#readme"
+}
