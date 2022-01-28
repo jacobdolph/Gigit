@@ -1,6 +1,17 @@
+# Under Construction
+### We need to accomplish a few things before we are ready to deploy this app for the world again
+- accomplish integrating graphql
+- removing Auth0
+- rebuild the authentication using express session and jwt
+- integrate Stripe (this is a nice to have but not necessary)
+- I am looking at a 2 week project
+
 # Gigit
 
 Full-stack application that gives you a place to schedule gigs for your entertainment needs. 
+
+- Gigit Started out as a Group Project in my coding bootcamp. Currently it is under construction to add more functionality
+
 
 ## [Try it yourself!](https://www.letsgigit.events)
 
