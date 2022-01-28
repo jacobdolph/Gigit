@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const gigSchema = new Schema({
   gigName: { type: String },
   gigType: { type: String },
-  name: { type: String },
-  phoneNum: { type: String, required: true },
+  userName: { type: String },
+  phoneNum: { type: String, required: false },
   email: { type: String },
   dateBooked: { type: Date, default: Date.now },
   date: { type: String },
