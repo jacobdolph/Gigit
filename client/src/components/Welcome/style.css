@@ -44,17 +44,8 @@ p {
 .logo {
   height: 130px;
 }
-.signInBtn {
-  width: 70%;
-  padding: 10px;
+.signInBtn button {
   color: white;
   background: #3c9c85;
   border-radius: 7px;
-}
-.signInBtn:visited {
-  color: white;
-}
-.signInBtn:link {
-  text-decoration: none;
-  color: white;
 }

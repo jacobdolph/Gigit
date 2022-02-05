@@ -8,10 +8,10 @@ import Logo from "../../gigitAssets/images/logo-green-min.png";
 function Welcome() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   return (
-    <div className="welcome main-landing">
-      <div className="overlay">
-        <div className="overlay-elements">
-          <img className="logo" src={Logo} alt="logo" />
+    <div className='welcome main-landing'>
+      <div className='overlay'>
+        <div className='overlay-elements'>
+          <img className='logo' src={Logo} alt='logo' />
           <h1>Welcome to Gigit!</h1>
           <h4>
             Find local talent, select Gigs, get the entertainment you need for
@@ -20,8 +20,8 @@ function Welcome() {
           <br />
           <p>Click below to start Gigging!</p>
           {!isAuthenticated && (
-            <Link className="signInBtn" onClick={() => loginWithRedirect({})}>
-              Log in / Sign Up
+            <Link className='signInBtn' to={"signin"}>
+              <button>Log in / Sign Up</button>
             </Link>
           )}
         </div>

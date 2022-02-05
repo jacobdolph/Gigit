@@ -1,4 +1,5 @@
 import React from "react";
+import SIGNUP from "./pages/Login";
 import GIGS from "./pages/Gigs";
 import GIGSETUP from "./pages/GigSetup";
 import WELCOME from "./pages/Welcome";
@@ -39,12 +40,15 @@ function App() {
           <Header />
           <Switch>
             <Route exact path='/loading' component={LOADING} />
-            <Route exact path='/' component={WELCOME} />
+            <Route exact path='/'>
+              <WELCOME />
+            </Route>
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/gigs' component={GIGS} />
             <Route exact path='/gig-setup' component={GIGSETUP} />
             <Route exact path='/callback' component={HOME} />
             <Route exact path='/home' component={HOME} />
+            <Route exact path='/signin' component={SIGNUP} />
           </Switch>
         </div>
       </Router>

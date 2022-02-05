@@ -12,23 +12,22 @@ function Header() {
   return (
     <Navbar bg='dark' variant='dark' expand='lg' className='navbar'>
       <Navbar.Brand>
-        <img
-          src={Logo}
-          width='auto'
-          height='40'
-          className='d-inline-block align-top'
-          alt='gig it logo'
-        />
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            width='auto'
+            height='40'
+            className='d-inline-block align-top'
+            alt='gig it logo'
+          />
+        </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='mr-auto'>
           {!isAuthenticated && (
             <Nav.Link>
-              <Link
-                className='headerLinks'
-                onClick={() => loginWithRedirect({})}
-              >
+              <Link className='headerLinks' to='/signin'>
                 Log in
               </Link>
             </Nav.Link>
