@@ -5,9 +5,13 @@ import { Navbar, Nav } from "react-bootstrap";
 import "./style.css";
 import Logo from "../../gigitAssets/images/logo-w-min.png";
 import { useAuth0 } from "../../react-auth0-spa";
+import Auth from "../../utils/auth";
 
 function Header() {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <Navbar bg='dark' variant='dark' expand='lg' className='navbar'>
@@ -25,15 +29,13 @@ function Header() {
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='mr-auto'>
-          {!isAuthenticated && (
+          {!Auth.loggedIn() ? (
             <Nav.Link>
               <Link className='headerLinks' to='/signin'>
                 Log in
               </Link>
             </Nav.Link>
-          )}
-
-          {isAuthenticated && (
+          ) : (
             <div className='navList'>
               <Nav.Link>
                 <Link to='/home' className='headerLinks'>
@@ -51,7 +53,7 @@ function Header() {
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to='/' className='headerLinks' onClick={() => logout()}>
+                <Link to='/' className='headerLinks' onClick={logout}>
                   Log out
                 </Link>
               </Nav.Link>

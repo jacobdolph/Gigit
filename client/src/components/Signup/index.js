@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { ADD_USER, LOGIN_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 import "./style.css";
 
 function Signup() {
@@ -35,6 +36,7 @@ function Signup() {
       const { data } = await addUser({
         variables: { ...formState },
       });
+      Auth.login(data.addUser.token);
       console.log(data);
     } catch (e) {
       console.error(e);
@@ -49,6 +51,7 @@ function Signup() {
       const { data } = await login({
         variables: { ...formState },
       });
+      Auth.login(data.login.token);
       console.log(data);
     } catch (e) {
       console.error(e);
