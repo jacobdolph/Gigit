@@ -51,8 +51,3 @@ db.once("open", () => {
     console.log(`API server running on port ${PORT}!`);
   });
 });
-
-// app.listen(PORT, function () {
-//   console.log("Listening to PORT" + PORT);
-//   console.log(`graphql server on localhost:${PORT}/graphql`);
-// });

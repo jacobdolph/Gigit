@@ -16,8 +16,6 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile";
-import history from "./utils/history";
-import { useAuth0 } from "./react-auth0-spa";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -46,7 +44,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <Router history={history}>
+      <Router>
         <div>
           <Header />
           <Switch>
