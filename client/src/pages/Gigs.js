@@ -10,7 +10,6 @@ import SantaImg from "../gigitAssets/images/santa-min.png";
 import TheaterImg from "../gigitAssets/images/theater-min.png";
 import Logo from "../gigitAssets/images/logo-w-min.png";
 import Loading from "../components/Loading/Loading";
-import { useAuth0 } from "../react-auth0-spa";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME_BASIC } from "../utils/queries";

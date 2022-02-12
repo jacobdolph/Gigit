@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth0 } from "../../react-auth0-spa";
 import { Container } from "../../components/Grid";
 import "./style.css";
 import ProfileCard from "../../components/ProfileCard";

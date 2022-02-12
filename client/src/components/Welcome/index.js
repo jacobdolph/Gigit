@@ -1,12 +1,10 @@
 import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "../../react-auth0-spa";
 // import { Container } from "../Grid";
 import Logo from "../../gigitAssets/images/logo-green-min.png";
 
 function Welcome() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
   return (
     <div className='welcome main-landing'>
       <div className='overlay'>

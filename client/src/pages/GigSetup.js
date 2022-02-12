@@ -9,8 +9,6 @@ import Comment from "../components/Comment";
 import Info from "../components/Info";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
-import API from "../utils/API";
-import { useAuth0 } from "../react-auth0-spa";
 import "./pages.css";
 import Auth from "../utils/auth";
 import { QUERY_ME_BASIC } from "../utils/queries";

@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav } from "react-bootstrap";
 import "./style.css";
 import Logo from "../../gigitAssets/images/logo-w-min.png";
-import { useAuth0 } from "../../react-auth0-spa";
 import Auth from "../../utils/auth";
 
 function Header() {
