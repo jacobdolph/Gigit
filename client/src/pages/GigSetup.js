@@ -20,7 +20,6 @@ function GIGSETUP() {
   const { addGig } = useMutation(ADD_GIG);
   console.log(userData?.me);
   // getting user date
-  // const { user } = useAuth0();
   // setting up state with useState
   // const [name, setName] = useState("");
   // const [phoneNum, setPhoneNum] = useState("");

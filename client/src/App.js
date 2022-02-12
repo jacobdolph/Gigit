@@ -37,11 +37,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const { loading } = useAuth0();
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <ApolloProvider client={client}>
       <Router>

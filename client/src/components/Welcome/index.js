@@ -3,6 +3,7 @@ import "./style.css";
 import { Link } from "react-router-dom";
 // import { Container } from "../Grid";
 import Logo from "../../gigitAssets/images/logo-green-min.png";
+import Auth from "../../utils/auth";
 
 function Welcome() {
   return (
@@ -17,7 +18,7 @@ function Welcome() {
           </h4>
           <br />
           <p>Click below to start Gigging!</p>
-          {!isAuthenticated && (
+          {!Auth.loggedIn && (
             <Link className='signInBtn' to={"signin"}>
               <button>Log in / Sign Up</button>
             </Link>
