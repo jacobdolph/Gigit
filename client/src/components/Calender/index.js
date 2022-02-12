@@ -3,16 +3,15 @@ import DatePicker from "react-date-picker";
 
 function Calendar(props) {
   const [date, setDate] = useState(new Date());
+  const { handleChange } = props;
 
   return (
     <div>
       <DatePicker
-        onChange={(e) => {
-          console.log(e);
-          setDate(e);
-          props.setDate(e);
-        }}
-        name="date"
+        onChange={(date) =>
+          handleChange({ target: { value: date, name: "date" } })
+        }
+        name='date'
         value={date}
       />
     </div>

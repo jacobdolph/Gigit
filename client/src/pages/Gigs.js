@@ -11,25 +11,29 @@ import TheaterImg from "../gigitAssets/images/theater-min.png";
 import Logo from "../gigitAssets/images/logo-w-min.png";
 import Loading from "../components/Loading/Loading";
 import { useAuth0 } from "../react-auth0-spa";
+import Auth from "../utils/auth";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME_BASIC } from "../utils/queries";
 
 function GIGS() {
+  const loggedIn = Auth.loggedIn();
+  const { loading, error, data: userData } = useQuery(QUERY_ME_BASIC);
+  console.log(userData);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  })
+    window.scrollTo(0, 0);
+  });
 
-  const { loading, user } = useAuth0();
-
-  if (loading || !user) {
+  if (loading) {
     return <Loading />;
   }
 
   return (
     <div>
-      <div className="main-landing">
-        <div className="overlay">
-          <div className="overlay-elements">
-            <img className="logo" src={Logo} alt="logo" />
+      <div className='main-landing'>
+        <div className='overlay'>
+          <div className='overlay-elements'>
+            <img className='logo' src={Logo} alt='logo' />
             <br />
             <h2>Ready To Gigit?</h2>
           </div>
@@ -37,55 +41,55 @@ function GIGS() {
       </div>
       <Container>
         <br />
-        <div className="section-divider">
+        <div className='section-divider'>
           <h3>Select a gig, choose a time and date, then Gigit!</h3>
         </div>
         <Row>
-          <Col size="md-2">
+          <Col size='md-2'>
             <Cards
-              title="Band Gigs"
-              description="Need a band for an event you are hosting?"
+              title='Band Gigs'
+              description='Need a band for an event you are hosting?'
               src={BandImg}
             />
           </Col>
-          <Col size="md-2"></Col>
-          <Col size="md-2">
+          <Col size='md-2'></Col>
+          <Col size='md-2'>
             <Cards
-              title="DJ Gigs"
-              description="Need a DJ for an event you are hosting?"
+              title='DJ Gigs'
+              description='Need a DJ for an event you are hosting?'
               src={DjImg}
             />
           </Col>
-          <Col size="md-2"></Col>
-          <Col size="md-2">
+          <Col size='md-2'></Col>
+          <Col size='md-2'>
             <Cards
-              title="Theater Gigs"
-              description="Need a theater preformance for an event you are hosting?"
+              title='Theater Gigs'
+              description='Need a theater preformance for an event you are hosting?'
               src={TheaterImg}
             />
           </Col>
         </Row>
         <Row>
-          <Col size="md-2">
+          <Col size='md-2'>
             <Cards
-              title="Santa Gigs"
-              description="Need a santa for an event you are hosting?"
+              title='Santa Gigs'
+              description='Need a santa for an event you are hosting?'
               src={SantaImg}
             />
           </Col>
-          <Col size="md-2"></Col>
-          <Col size="md-2">
+          <Col size='md-2'></Col>
+          <Col size='md-2'>
             <Cards
-              title="Magic Gigs"
-              description="Need a magician for an event you are hosting?"
+              title='Magic Gigs'
+              description='Need a magician for an event you are hosting?'
               src={MagicImg}
             />
           </Col>
-          <Col size="md-2"></Col>
-          <Col size="md-2">
+          <Col size='md-2'></Col>
+          <Col size='md-2'>
             <Cards
-              title="Comedy Gigs"
-              description="Need a comedian for an event you are hosting?"
+              title='Comedy Gigs'
+              description='Need a comedian for an event you are hosting?'
               src={ComedyImg}
             />
           </Col>

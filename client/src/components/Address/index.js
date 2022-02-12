@@ -1,111 +1,106 @@
 import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Col } from "react-bootstrap";
 
-function Address(props) {
+function Address({ handleChange }) {
+  const [state, setState] = useState("");
 
-    const [state, setState] = useState("")
+  return (
+    <div>
+      <Form.Group controlId='formGridAddress1'>
+        <Form.Label>Address Line 1</Form.Label>
+        <Form.Control
+          name='addOne'
+          placeholder='1234 Main St'
+          onChange={handleChange}
+        />
+      </Form.Group>
 
-    return (
-        <div>
-            <Form.Group controlId="formGridAddress1">
-                <Form.Label>Address Line 1</Form.Label>
-                <Form.Control
-                    name="adressOne"
-                    placeholder="1234 Main St"
-                    onChange={e => { props.setAddOne(e.target.value) }}
-                />
-            </Form.Group>
+      <Form.Group controlId='formGridAddress2'>
+        <Form.Label>Address Line 2</Form.Label>
+        <Form.Control
+          name='addTwo'
+          placeholder='Apartment, studio, or floor'
+          onChange={handleChange}
+        />
+      </Form.Group>
 
-            <Form.Group controlId="formGridAddress2">
-                <Form.Label>Address Line 2</Form.Label>
-                <Form.Control
-                    name="adressTwo"
-                    placeholder="Apartment, studio, or floor"
-                    onChange={e => { props.setAddTwo(e.target.value) }}
-                />
-            </Form.Group>
+      <Form.Row>
+        <Form.Group as={Col} controlId='formGridCity'>
+          <Form.Label>City</Form.Label>
+          <Form.Control name='city' onChange={handleChange} />
+        </Form.Group>
 
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridCity">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control
-                        name="city"
-                        onChange={e => { props.setCity(e.target.value) }}
-                    />
-                </Form.Group>
+        <Form.Group as={Col} controlId='formGridState'>
+          <Form.Label>State</Form.Label>
+          <Form.Control
+            as='select'
+            name='usState'
+            onChange={handleChange}
+            value={state}
+          >
+            <option>Choose...</option>
+            <option value='AL'>Alabama</option>
+            <option value='AK'>Alaska</option>
+            <option value='AZ'>Arizona</option>
+            <option value='AR'>Arkansas</option>
+            <option value='CA'>California</option>
+            <option value='CO'>Colorado</option>
+            <option value='CT'>Connecticut</option>
+            <option value='DE'>Delaware</option>
+            <option value='DC'>District Of Columbia</option>
+            <option value='FL'>Florida</option>
+            <option value='GA'>Georgia</option>
+            <option value='HI'>Hawaii</option>
+            <option value='ID'>Idaho</option>
+            <option value='IL'>Illinois</option>
+            <option value='IN'>Indiana</option>
+            <option value='IA'>Iowa</option>
+            <option value='KS'>Kansas</option>
+            <option value='KY'>Kentucky</option>
+            <option value='LA'>Louisiana</option>
+            <option value='ME'>Maine</option>
+            <option value='MD'>Maryland</option>
+            <option value='MA'>Massachusetts</option>
+            <option value='MI'>Michigan</option>
+            <option value='MN'>Minnesota</option>
+            <option value='MS'>Mississippi</option>
+            <option value='MO'>Missouri</option>
+            <option value='MT'>Montana</option>
+            <option value='NE'>Nebraska</option>
+            <option value='NV'>Nevada</option>
+            <option value='NH'>New Hampshire</option>
+            <option value='NJ'>New Jersey</option>
+            <option value='NM'>New Mexico</option>
+            <option value='NY'>New York</option>
+            <option value='NC'>North Carolina</option>
+            <option value='ND'>North Dakota</option>
+            <option value='OH'>Ohio</option>
+            <option value='OK'>Oklahoma</option>
+            <option value='OR'>Oregon</option>
+            <option value='PA'>Pennsylvania</option>
+            <option value='RI'>Rhode Island</option>
+            <option value='SC'>South Carolina</option>
+            <option value='SD'>South Dakota</option>
+            <option value='TN'>Tennessee</option>
+            <option value='TX'>Texas</option>
+            <option value='UT'>Utah</option>
+            <option value='VT'>Vermont</option>
+            <option value='VA'>Virginia</option>
+            <option value='WA'>Washington</option>
+            <option value='WV'>West Virginia</option>
+            <option value='WI'>Wisconsin</option>
+            <option value='WY'>Wyoming</option>
+          </Form.Control>
+        </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>State</Form.Label>
-                    <Form.Control as="select" name="state" onChange={e => {
-                        props.setUsState(e.target.value)
-                        setState(e.target.value)
-                        console.log(state)
-                    }}
-                        value={state}
-                    >
-                        <option>Choose...</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="DC">District Of Columbia</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                    </Form.Control>
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridZip">
-                    <Form.Label>Zip</Form.Label>
-                    <Form.Control name="zip" onChange={e => { props.setZip(e.target.value) }} />
-                </Form.Group>
-            </Form.Row>
-        </div>
-    );
+        <Form.Group as={Col} controlId='formGridZip'>
+          <Form.Label>Zip</Form.Label>
+          <Form.Control name='zip' onChange={handleChange} />
+        </Form.Group>
+      </Form.Row>
+    </div>
+  );
 }
 
-export default Address
+export default Address;
