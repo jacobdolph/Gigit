@@ -1,0 +1,35 @@
+path, line {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: dash 2000ms linear infinite;
+}
+  
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+}
+.loadingLogo{
+    height: 50px;
+    width: auto;
+}
+
+.div {
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    margin: 100px auto;
+}
+.loading{
+    font-size: 1.5rem;
+    margin-top: 30px;
+}
+
+/* @media only screen and (max-width: 600px) {
+    .div {
+        text-align: center;
+        width: 300px;
+        height: 200px;
+        margin: 100px auto;
+    }
+} */

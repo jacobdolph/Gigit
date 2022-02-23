@@ -1,0 +1,21 @@
+#star {
+    color: rgb(250, 253, 89);
+    font-size: 20px;
+    margin: 4px;
+}
+
+#grey-star {
+    color: dimgray;
+    font-size: 20px;
+    margin: 4px;
+}
+
+p {
+    text-align: unset;
+}
+
+.divs {
+    border-radius: 5px;
+    background-color: #3C9C85;
+    padding: 10px;
+}
