@@ -3,13 +3,7 @@ const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 const { authMiddleware } = require("./utils/auth");
-const mongoose = require("mongoose");
-const fs = require("fs");
 require("dotenv").config();
-const { auth } = require("express-openid-connect");
-const routes = require("./routes");
-const cors = require("cors");
-const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -38,17 +32,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build/")));
+  app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
-// app.use(routes);
-
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/giglist", {
-//   useNewUrlParser: true,
-// });
 
 db.once("open", () => {
   app.listen(PORT, () => {
