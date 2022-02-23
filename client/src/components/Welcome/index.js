@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
-// import { Container } from "../Grid";
 import Logo from "../../gigitAssets/images/logo-green-min.png";
 import Auth from "../../utils/auth";
 

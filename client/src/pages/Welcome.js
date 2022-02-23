@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Welcome from "../components/Welcome";
+import "./pages.css";
 
 const WELCOME = () => {
   useEffect(() => {

@@ -14,7 +14,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile";
 
 const httpLink = createHttpLink({
@@ -40,20 +40,18 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Header />
         <div>
-          <Header />
-          <Switch>
-            <Route exact path='/loading' component={LOADING} />
-            <Route exact path='/'>
-              <WELCOME />
-            </Route>
-            <Route exact path='/profile' component={Profile} />
-            <Route exact path='/gigs' component={GIGS} />
-            <Route exact path='/gig-setup' component={GIGSETUP} />
-            <Route exact path='/callback' component={HOME} />
-            <Route exact path='/home' component={HOME} />
-            <Route exact path='/signin' component={SIGNUP} />
-          </Switch>
+          <Routes>
+            <Route exact path='/loading' exact element={<LOADING />} />
+            <Route exact path='/' exact element={<WELCOME />} />
+            <Route exact path='/profile' exact element={<Profile />} />
+            <Route exact path='/gigs' exact element={<GIGS />} />
+            <Route exact path='/gig-setup' exact element={<GIGSETUP />} />
+            <Route exact path='/callback' exact element={<HOME />} />
+            <Route exact path='/home' exact element={<HOME />} />
+            <Route exact path='/signin' exact element={<SIGNUP />} />
+          </Routes>
         </div>
       </Router>
     </ApolloProvider>

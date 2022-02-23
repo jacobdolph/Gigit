@@ -7,7 +7,7 @@ import Time from "../components/Time";
 import Address from "../components/Address";
 import Comment from "../components/Comment";
 import Info from "../components/Info";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import "./pages.css";
 import Auth from "../utils/auth";

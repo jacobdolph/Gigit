@@ -7,6 +7,7 @@
   color: white;
   font-style: normal;
   margin-left: 25px;
+  text-decoration: none;
 }
 
 .headerLinks:hover {
