@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container } from "../../components/Grid";
 import "./style.css";
+import { QUERY_ME, QUERY_ME_BASIC } from "../../utils/queries";
+import Auth from "../../utils/auth";
+import { useQuery } from "@apollo/client";
 import ProfileCard from "../../components/ProfileCard";
 import API from "../../utils/API";
 var stockUser =
@@ -8,17 +11,11 @@ var stockUser =
 
 const Profile = () => {
   var userImage;
-  const [gigResult, setGigResult] = useState([]);
-  const [user, setUser] = useState("");
-  // useeffect for component did mount
-  // useEffect(() => {
-  //   // get all gigs and match with email
-  //   API.getGigs().then((res) => {
-  //     setGigResult(res.data.filter((gig) => gig.email === user.email));
-  //   });
-  // }, [user.email]);
+  const loggedIn = Auth.loggedIn();
+  const { loading, error, data: userData } = useQuery(QUERY_ME_BASIC);
+  console.log(userData);
 
-  if (!user) {
+  if (!userData?.me?.__typename && !loggedIn) {
     return (
       <div className='profileError'>
         <h3 className='errorMessage'>Profile Error 404 User Not Found</h3>
@@ -29,22 +26,10 @@ const Profile = () => {
     );
   } else {
     // declaring if user has image or not
-    if (user.picture) {
-      userImage = user.picture;
+    if (userData.me.picture) {
+      userImage = userData.me.picture;
     } else {
       userImage = stockUser;
-    }
-
-    function loadGigs() {
-      API.getGigs().then((res) => {
-        setGigResult(res.data.filter((gig) => gig.email === user.email));
-      });
-    }
-
-    function deleteGig(id) {
-      API.deleteGig(id)
-        .then((res) => loadGigs())
-        .catch((err) => console.log(err));
     }
 
     // returning page
@@ -53,7 +38,7 @@ const Profile = () => {
         <div className='profileHead'>
           <img className='userImage' src={userImage} alt='profile' />
 
-          <h2 className='userName'>Welcome {user.name}</h2>
+          <h2 className='userName'>Welcome {userData.me.name}</h2>
         </div>
         {/* not using row and col since react isnt liking it */}
         <div className='cardSection'>
@@ -61,7 +46,7 @@ const Profile = () => {
             <h3 className='title'>Your currently scheduled Gigs</h3>
           </div>
           <div className='cardContainer'>
-            {gigResult.map((res) => (
+            {userData?.me?.gigs?.map((res) => (
               <ProfileCard
                 key={res._id}
                 gigName={res.gigName}
@@ -70,7 +55,6 @@ const Profile = () => {
                 fromTime={res.startTime}
                 toTime={res.endTime}
                 comment={res.userNotes}
-                onClick={() => deleteGig(res._id)}
               />
             ))}
           </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Col } from "react-bootstrap";
 
-function Address({ handleChange }) {
+function Address() {
   const [state, setState] = useState("");
 
   return (
@@ -12,7 +12,7 @@ function Address({ handleChange }) {
         <Form.Control
           name='addOne'
           placeholder='1234 Main St'
-          onChange={handleChange}
+          // onChange={handleChange}
         />
       </Form.Group>
 
@@ -21,14 +21,17 @@ function Address({ handleChange }) {
         <Form.Control
           name='addTwo'
           placeholder='Apartment, studio, or floor'
-          onChange={handleChange}
+          // onChange={handleChange}
         />
       </Form.Group>
 
       <Form.Row>
         <Form.Group as={Col} controlId='formGridCity'>
           <Form.Label>City</Form.Label>
-          <Form.Control name='city' onChange={handleChange} />
+          <Form.Control
+            name='city'
+            //  onChange={handleChange}
+          />
         </Form.Group>
 
         <Form.Group as={Col} controlId='formGridState'>
@@ -36,7 +39,7 @@ function Address({ handleChange }) {
           <Form.Control
             as='select'
             name='usState'
-            onChange={handleChange}
+            // onChange={handleChange}
             value={state}
           >
             <option>Choose...</option>
@@ -96,7 +99,10 @@ function Address({ handleChange }) {
 
         <Form.Group as={Col} controlId='formGridZip'>
           <Form.Label>Zip</Form.Label>
-          <Form.Control name='zip' onChange={handleChange} />
+          <Form.Control
+            name='zip'
+            // onChange={handleChange}
+          />
         </Form.Group>
       </Form.Row>
     </div>

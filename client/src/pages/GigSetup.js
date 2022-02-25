@@ -38,7 +38,7 @@ function GIGSETUP() {
     gigType: localStorage.getItem("gig").toString() || "",
     userName: userData?.me?.userName || "",
     phoneNum: "",
-    dateBooked: new Date.now().toString(),
+    dateBooked: "",
     date: "",
     email: userData?.me?.email || "",
     city: "",
@@ -48,7 +48,7 @@ function GIGSETUP() {
     zip: "",
     addOne: "",
     addTwo: "",
-    gigDate: gigSetup.date,
+    gigDate: "",
     userNotes: "",
   });
 

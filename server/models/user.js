@@ -16,6 +16,10 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
+    gig: {
+      type: Array,
+      required: false,
+    },
   },
   {
     toJSON: {

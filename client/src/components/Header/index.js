@@ -33,10 +33,16 @@ function Header() {
             </Link>
           ) : (
             <div className='navList'>
-              <Link to='/home'>Home</Link>
-              <Link to='/gigs'>Gigs</Link>
-              <Link to='/profile'>Profile</Link>
-              <Link to='/' onClick={logout}>
+              <Link className='headerLinks' to='/home'>
+                Home
+              </Link>
+              <Link className='headerLinks' to='/gigs'>
+                Gigs
+              </Link>
+              <Link className='headerLinks' to='/profile'>
+                Profile
+              </Link>
+              <Link className='headerLinks' to='/' onClick={logout}>
                 Log out
               </Link>
             </div>
