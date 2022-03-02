@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, Col } from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
 
 function Address() {
   const [state, setState] = useState("");
@@ -25,7 +25,7 @@ function Address() {
         />
       </Form.Group>
 
-      <Form.Row>
+      <Row>
         <Form.Group as={Col} controlId='formGridCity'>
           <Form.Label>City</Form.Label>
           <Form.Control
@@ -104,7 +104,7 @@ function Address() {
             // onChange={handleChange}
           />
         </Form.Group>
-      </Form.Row>
+      </Row>
     </div>
   );
 }
