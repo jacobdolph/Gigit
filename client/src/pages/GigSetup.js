@@ -19,19 +19,6 @@ function GIGSETUP() {
   const { loading, error, data: userData } = useQuery(QUERY_ME_BASIC);
   const { addGig } = useMutation(ADD_GIG);
   console.log(userData?.me);
-  // getting user date
-  // setting up state with useState
-  // const [name, setName] = useState("");
-  // const [phoneNum, setPhoneNum] = useState("");
-  // const [date, setDate] = useState("");
-  // const [addOne, setAddOne] = useState("");
-  // const [addTwo, setAddTwo] = useState("");
-  // const [city, setCity] = useState("");
-  // const [endTime, setEndTime] = useState("");
-  // const [startTime, setStartTime] = useState("");
-  // const [usState, setUsState] = useState("");
-  // const [zip, setZip] = useState("");
-  // const [userNotes, setUserNotes] = useState("");
 
   const [gigSetup, setGigSetup] = useState({
     gigName: localStorage.getItem("gig").toString() || "",
@@ -40,14 +27,11 @@ function GIGSETUP() {
     phoneNum: "",
     dateBooked: "",
     date: "",
-    email: userData?.me?.email || "",
     city: "",
     endTime: "",
     startTime: "",
     usState: "",
     zip: "",
-    addOne: "",
-    addTwo: "",
     gigDate: "",
     userNotes: "",
   });
@@ -71,43 +55,23 @@ function GIGSETUP() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // use state for all imputs
-  // var state = {
-  //   gigName,
-  //   name,
-  //   phoneNum,
-  //   email,
-  //   date,
-  //   addOne,
-  //   addTwo,
-  //   city,
-  //   endTime,
-  //   startTime,
-  //   usState,
-  //   zip,
-  //   userNotes,
-  // };
   useEffect(() => {
     setGigSetup({
       ...gigSetup,
       userName: userData?.me?.userName,
-      email: userData?.me?.email,
     });
-  }, [userData?.me.email, userData?.me.userName]);
+  }, [userData?.me.userName]);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    addGig(gigSetup);
-    // console.log("form submitted!");
-    // console.log(state);
-    // console.log(state.date);
-
-    // API.saveGig(state)
-    //   .then((res) => ({
-    //     result: res.data,
-    //   }))
-    //   .catch((err) => console.log(err));
-    handleShow();
+    try {
+      const { data } = await addGig({
+        variables: { ...gigSetup },
+      });
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
