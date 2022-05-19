@@ -1,9 +1,9 @@
 import React from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 function Info(props) {
-  const { handleChange } = props;
+  const { handleChange, setFormStep } = props;
   return (
     <div>
       <Form.Group controlId='formBasicEmail'>
@@ -25,6 +25,31 @@ function Info(props) {
           placeholder='Phone Number'
         />
       </Form.Group>
+      {/* <Button
+        variant='success'
+        type='submit'
+        style={{
+          width: "40%",
+          height: "50px",
+          margin: "2em 1em",
+          backgroundColor: "#3e9d84",
+        }}
+      >
+        Back
+      </Button> */}
+      <Button
+        variant='success'
+        type='submit'
+        onClick={() => setFormStep("second")}
+        style={{
+          width: "40%",
+          height: "50px",
+          margin: "2em 1em",
+          backgroundColor: "#3e9d84",
+        }}
+      >
+        Continue
+      </Button>
     </div>
   );
 }

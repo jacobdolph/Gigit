@@ -26,7 +26,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_GIG = gql`
-  mutation AddGig(
+  mutation addGig(
     $gigName: String!
     $gigType: String!
     $userName: String!

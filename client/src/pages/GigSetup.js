@@ -10,15 +10,16 @@ import Info from "../components/Info";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import "./pages.css";
-import Auth from "../utils/auth";
 import { QUERY_ME_BASIC } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_GIG } from "../utils/mutations";
 
 function GIGSETUP() {
   const { loading, error, data: userData } = useQuery(QUERY_ME_BASIC);
-  const { addGig } = useMutation(ADD_GIG);
+  const [addGig, { err }] = useMutation(ADD_GIG);
   console.log(userData?.me);
+
+  const [formStep, setFormStep] = useState("first");
 
   const [gigSetup, setGigSetup] = useState({
     gigName: localStorage.getItem("gig").toString() || "",
@@ -81,71 +82,121 @@ function GIGSETUP() {
   return (
     <Container fluid>
       <Row>
-        <Col size='md-5 sm-12'></Col>
-        <Col size='md-2 sm-12'>
+        <Col size='md-3 sm-12'></Col>
+        <Col size='md-6 sm-12'>
           <h3>Please Enter all required info</h3>
 
-          <Info handleChange={handleChange} />
+          {formStep === "first" && (
+            <Info handleChange={handleChange} setFormStep={setFormStep} />
+          )}
+          {formStep === "second" && (
+            <Calender handleChange={handleChange} setFormStep={setFormStep} />
+          )}
+          {formStep === "third" && (
+            <div>
+              <h4>How long will you need the Gig?</h4>
+              <p>From: </p>
+              <Time start='start' handleChange={handleChange} />
+              <p>To: </p>
+              <Time handleChange={handleChange} />
+              <Button
+                variant='success'
+                type='submit'
+                onClick={() => setFormStep("second")}
+                style={{
+                  width: "40%",
+                  height: "50px",
+                  margin: "2em 1em",
+                  backgroundColor: "#3e9d84",
+                }}
+              >
+                Back
+              </Button>
+              <Button
+                variant='success'
+                type='submit'
+                onClick={() => setFormStep("fourth")}
+                style={{
+                  width: "40%",
+                  height: "50px",
+                  margin: "2em 1em",
+                  backgroundColor: "#3e9d84",
+                }}
+              >
+                Continue
+              </Button>
+            </div>
+          )}
+          {formStep === "fourth" && (
+            <div>
+              <h4>Address for Event</h4>
+              <Address handleChange={handleChange} />
+              <Button
+                variant='success'
+                type='submit'
+                onClick={() => setFormStep("third")}
+                style={{
+                  width: "40%",
+                  height: "50px",
+                  margin: "2em 1em",
+                  backgroundColor: "#3e9d84",
+                }}
+              >
+                Back
+              </Button>
+              <Button
+                variant='success'
+                type='submit'
+                onClick={() => setFormStep("fifth")}
+                style={{
+                  width: "40%",
+                  height: "50px",
+                  margin: "2em 1em",
+                  backgroundColor: "#3e9d84",
+                }}
+              >
+                Continue
+              </Button>
+            </div>
+          )}
+          {formStep === "fifth" && (
+            <div>
+              <h4>Leave a comment for the Talent</h4>
+              <Comment handleChange={handleChange} setFormStep={setFormStep} />
+            </div>
+          )}
         </Col>
-        <Col size='md-5 sm-12'></Col>
+        <Col size='md-3 sm-12'></Col>
       </Row>
-
       <Row>
-        <Col size='md-5 sm-12'></Col>
-        <Col size='md-2 sm-12'>
-          <h4>Date of Event</h4>
-
-          <Calender handleChange={handleChange} />
+        <Col size='md-3 sm-12'></Col>
+        <Col size='md-6 sm-12'>
+          {formStep === "sixth" && (
+            <div>
+              <Container>
+                <div>Gig Name: {gigSetup.gigName}</div>
+                <div>Customer Name: {gigSetup.userName}</div>
+                <div>Date Booked: {gigSetup.gigDate}</div>
+                <div>City: {gigSetup.city}</div>
+                <div>State: {gigSetup.ustate}</div>
+                <div>Zipcode: {gigSetup.zip}</div>
+              </Container>
+              <Button
+                variant='success'
+                type='submit'
+                onClick={handleFormSubmit}
+                style={{
+                  width: "100%",
+                  height: "50px",
+                  backgroundColor: "#3e9d84",
+                }}
+              >
+                GIG IT!
+              </Button>
+            </div>
+          )}
         </Col>
-        <Col size='md-5 sm-12'></Col>
-      </Row>
-
-      <Row>
-        <Col size='md-5 sm-12'></Col>
-        <Col size='md-2 sm-12'>
-          <h4>How long will you need the Gig?</h4>
-          <p>From: </p>
-          <Time start='start' handleChange={handleChange} />
-          <p>To: </p>
-          <Time handleChange={handleChange} />
-        </Col>
-        <Col size='md-5 sm-12'></Col>
-      </Row>
-
-      <Row>
-        <Col size='md-5 sm-12'></Col>
-        <Col size='md-2 sm-12'>
-          <h4>Address for Event</h4>
-          <Address handleChange={handleChange} />
-        </Col>
-        <Col size='md-5 sm-12'></Col>
-      </Row>
-
-      <Row>
-        <Col size='md-5 sm-12'></Col>
-        <Col size='md-2 sm-12'>
-          <h4>Leave a comment for the Gigger</h4>
-          <Comment handleChange={handleChange} />
-        </Col>
-        <Col size='md-5 sm-12'></Col>
-      </Row>
-      <Row>
-        <Col size='md-2 sm-12'></Col>
-        <Col size='md-8 sm-12'>
-          <Button
-            variant='success'
-            type='submit'
-            onClick={handleFormSubmit}
-            style={{
-              width: "100%",
-              height: "50px",
-              backgroundColor: "#3e9d84",
-            }}
-          >
-            GIG IT!
-          </Button>
-        </Col>
-        <Col size='md-2 sm-12'></Col>
+        <Col size='md-3 sm-12'></Col>
       </Row>
 
       <Modal show={show} onHide={handleClose}>
